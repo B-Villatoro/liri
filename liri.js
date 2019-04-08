@@ -83,8 +83,6 @@ switch(command){
             console.log(response.data[i].venue.region,null,2);
             console.log(response.data[i].venue.city,null,2);
             console.log(`${month}/${day}/${year}`);
-            // response = JSON.stringify(response.data, null, 3);
-            // console.log(response);
         }
     })
     break;
