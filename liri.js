@@ -19,14 +19,24 @@ switch(command){
         year = response.data.Year;
         director = response.data.Director;
         plot = response.data.Plot;
-        metascore = response.data.Metascore;
-        console.log(" ");
-        console.log(title);
-        console.log(year);
-        console.log(`Directed by ${director}`);
-        console.log(`Metascore : ${metascore}`);
-        console.log(plot);
 
+        console.log(" ");
+            console.log(title);
+            console.log(year);
+            console.log(response.data.Country);
+            console.log(response.data.Language);
+            console.log(`Directed by ${director}`);
+            console.log(response.data.Actors);
+            console.log(plot);
+
+            console.log("\nRatings ");
+
+        for(let i = 0; i<response.data.Ratings.length -1; i++){
+            ratings = response.data.Ratings[i];
+            console.log(`${ratings.Source} : ${ratings.Value}`);
+    
+        }
+        
        
        
     })
@@ -44,6 +54,8 @@ switch(command){
 
             console.log(JSON.stringify(title,null,3));
             console.log(JSON.stringify(artist,null,3));
+            console.log(response.tracks.items[i].album.name);
+            console.log(response.tracks.items[i].preview_url);
     
         }
         
@@ -61,11 +73,16 @@ switch(command){
     let qUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
     axios.get(qUrl).then(function (response){
         for(let i = 0; i < 5; i++ ){
+            let time = response.data[i].datetime.slice(0,10)
+            let year = time.slice(0,4);
+            let month = time.slice(5,7);
+            let day = time.slice(8,12);
             console.log(" ");
-            console.log(JSON.stringify(response.data[i].venue.name,null,2));
-            console.log(JSON.stringify(response.data[i].venue.country,null,2));
-            console.log(JSON.stringify(response.data[i].venue.region,null,2));
-            console.log(JSON.stringify(response.data[i].venue.city,null,2));
+            console.log(response.data[i].venue.name,null,2);
+            console.log(response.data[i].venue.country,null,2);
+            console.log(response.data[i].venue.region,null,2);
+            console.log(response.data[i].venue.city,null,2);
+            console.log(`${month}/${day}/${year}`);
             // response = JSON.stringify(response.data, null, 3);
             // console.log(response);
         }
