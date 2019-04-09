@@ -4,3 +4,4 @@
 
 ## Commands
 ### the commands are movie, music, and band!
+there is also do-this as a not so secret command.
